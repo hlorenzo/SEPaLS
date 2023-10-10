@@ -12,7 +12,7 @@ maximum_Likelihood_SEPaLS(X, Y, yn)
 \item{Y}{\eqn{(n)}-dimensional vector of the response.}
 
 \item{yn}{the quantile corresponding to the lowest values of \eqn{Y}s to put
-in the queue.}
+in the tail.}
 }
 \value{
 The maximum likelihood estimator.
