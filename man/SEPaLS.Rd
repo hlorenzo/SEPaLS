@@ -19,19 +19,19 @@ SEPaLS(
 
 \item{Y}{\eqn{(n)}-dimensional vector of the response.}
 
-\item{yn}{\eqn{y_n} the quantile correponding to lowest values of \eqn{Y}s to put in th
+\item{yn}{\eqn{y_n}  quantile correponding to lowest values of \eqn{Y}s to put in th
 e queue.}
 
-\item{type}{character, wether \code{vMF} for von Mises-Fisher prior or
+\item{type}{character, can be \code{vMF} for von Mises-Fisher prior, or
 \code{Laplace} for Laplace prior. See details.}
 
-\item{mu0}{\eqn{\mu_0}, unitary \eqn{(p)}-dimensional vector. The direction
+\item{mu0}{\eqn{\mu_0}, unitary \eqn{(p)}-dimensional vector. Direction
 parameter for the \code{vMF} prior.}
 
-\item{kappa0}{\eqn{\kappa_0}, positive. The concentration parameter for the
+\item{kappa0}{\eqn{\kappa_0}, positive number. Concentration parameter for the
 \code{vMF} prior.}
 
-\item{lambda}{\eqn{\lambda}, positive. The concentration parameter for the
+\item{lambda}{\eqn{\lambda}, positive number. Concentration parameter for the
 \code{Laplace} prior.}
 }
 \value{
