@@ -2,7 +2,7 @@ Package: SEPaLS
 Type: Package
 Title: Shrinkage for Extreme Partial Least-Squares
 Version: 0.1.0
-Author: Stéphane Girard and Hadrien Lorenzo
+Author: Stéphane Girard, Julyan Arbel and Hadrien Lorenzo
 Maintainer: Hadrien Lorenzo <hadrien.lorenzo@univ-amu.fr>
 Description: Estimate SEPaLS estimators.
 License: MIT + file LICENSE
