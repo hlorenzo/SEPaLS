@@ -20,8 +20,8 @@ bootstrap.SEPaLS(
 
 \item{Y}{\eqn{(n)}-dimensional vector of the response.}
 
-\item{yn}{\eqn{y_n} the quantile corresponding to lowest values of \eqn{Y}s to put in th
-e queue.}
+\item{yn}{\eqn{y_n} the quantile corresponding to lowest values of \eqn{Y}s
+to put in the tail.}
 
 \item{type}{character, whether \code{vMF} for von Mises-Fisher prior or
 \code{Laplace} for Laplace prior. See details.}
@@ -41,11 +41,11 @@ the SEPaLS directions. Default to 20.}
 \value{
 A list with two elements:
 \itemize{
-\item{\code{ws}}{A \eqn{(B\times p)}-dimensional matrix  with each
-row corresponding to the \emph{SEPaLS} direction estimated on each bootstrap
-sample.}
-\item{\code{cor}}{The correlation of each estimate direction on the Out-Of-Ba
-g (OOB) sample with the response.}
+    \item \code{ws}: A \eqn{(B\times p)}-dimensional matrix  with each
+    row corresponding to the \emph{SEPaLS} direction estimated on each
+    bootstrap sample.
+    \item \code{cor}: The correlation of each estimate direction on the
+    Out-Of-Bag (OOB) sample with the response.
 }
 }
 \description{

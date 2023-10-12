@@ -19,19 +19,19 @@ SEPaLS(
 
 \item{Y}{\eqn{(n)}-dimensional vector of the response.}
 
-\item{yn}{\eqn{y_n}  quantile correponding to lowest values of \eqn{Y}s to put in th
-e queue.}
+\item{yn}{\eqn{y_n} the quantile correponding to lowest values of \eqn{Y}s to put in th
+e tail.}
 
-\item{type}{character, can be \code{vMF} for von Mises-Fisher prior, or
+\item{type}{character, wether \code{vMF} for von Mises-Fisher prior or
 \code{Laplace} for Laplace prior. See details.}
 
-\item{mu0}{\eqn{\mu_0}, unitary \eqn{(p)}-dimensional vector. Direction
+\item{mu0}{\eqn{\mu_0}, unitary \eqn{(p)}-dimensional vector. The direction
 parameter for the \code{vMF} prior.}
 
-\item{kappa0}{\eqn{\kappa_0}, positive number. Concentration parameter for the
+\item{kappa0}{\eqn{\kappa_0}, positive. The concentration parameter for the
 \code{vMF} prior.}
 
-\item{lambda}{\eqn{\lambda}, positive number. Concentration parameter for the
+\item{lambda}{\eqn{\lambda}, positive. The concentration parameter for the
 \code{Laplace} prior.}
 }
 \value{
@@ -42,20 +42,16 @@ Function to estimate SEPaLS estimators
 }
 \details{
 The SEPaLS estimators are built depending on the value given to
-\code{type}
+\code{type}:
 \itemize{
- \item{\code{vMF} }{then the estimator is proportional to
- \deqn{
- \hat{\beta}_{ml}(y_n) + \kappa_0\mu_0,
- }
- where \eqn{\hat{\beta}_{ml}(y_n)} is the EPLS estimator, which coincides
- with the maximum-likelihood estimator of SEPaLS for a threshold \eqn{y_n}.}
- \item{\code{Laplace} }{then the estimator is proportional to
- \deqn{
- S_\lambda\left(\hat{\beta}_{ml}(y_n)\right),
- }
-where \eqn{S_\lambda} is the soft-thresholding operator of threshold
-\eqn{\lambda}.}
+    \item \code{vMF}: then the estimator is proportional to
+    \deqn{ \hat{\beta}_{ml}(y_n) + \kappa_0\mu_0, }
+    where \eqn{\hat{\beta}_{ml}(y_n)} is the EPLS estimator, which coincides
+    with the maximum-likelihood estimator of SEPaLS for a threshold \eqn{y_n}.
+    \item \code{Laplace}: then the estimator is proportional to
+    \deqn{ S_\lambda\left(\hat{\beta}_{ml}(y_n)\right), }
+    where \eqn{S_\lambda} is the soft-thresholding operator of threshold
+    \eqn{\lambda}.
 }
 }
 \examples{

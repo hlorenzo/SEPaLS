@@ -3,7 +3,7 @@
 #' @param X \eqn{(n\times p)}-dimensional matrix of the covariates.
 #' @param Y \eqn{(n)}-dimensional vector of the response.
 #' @param yn the quantile corresponding to the lowest values of \eqn{Y}s to put
-#' in the queue.
+#' in the tail.
 #'
 #' @return The maximum likelihood estimator.
 #' @export
@@ -23,15 +23,15 @@
 maximum_Likelihood_SEPaLS <- function(X,Y,yn){
   id <- which(Y>yn)
   n <- length(Y)
-  n_queue <- length(id)
-  ## Select data in queue
+  n_tail <- length(id)
+  ## Select data in tail
   X_here <- X[id,,drop=FALSE]
   Y_here <- Y[id]
   ## Build statistics
   m_Y <- sum(Y_here)/n
   m_X <- colSums(X_here)/n
   m_XY <- as.vector(t(X_here)%*%Y_here)/n
-  F_survival <- n_queue/n
+  F_survival <- n_tail/n
   v_n <- F_survival*m_XY-m_X*m_Y
   return(v_n)
 }
@@ -41,7 +41,7 @@ maximum_Likelihood_SEPaLS <- function(X,Y,yn){
 #' @param X \eqn{(n\times p)}-dimensional matrix of the covariates.
 #' @param Y \eqn{(n)}-dimensional vector of the response.
 #' @param yn \eqn{y_n} the quantile correponding to lowest values of \eqn{Y}s to put in th
-#' e queue.
+#' e tail.
 #' @param type character, wether \code{vMF} for von Mises-Fisher prior or
 #' \code{Laplace} for Laplace prior. See details.
 #' @param mu0  \eqn{\mu_0}, unitary \eqn{(p)}-dimensional vector. The direction
@@ -52,20 +52,16 @@ maximum_Likelihood_SEPaLS <- function(X,Y,yn){
 #' \code{Laplace} prior.
 #'
 #' @details The SEPaLS estimators are built depending on the value given to
-#' \code{type}
+#' \code{type}:
 #' \itemize{
-#'  \item{\code{vMF} }{then the estimator is proportional to
-#'  \deqn{
-#'  \hat{\beta}_{ml}(y_n) + \kappa_0\mu_0,
-#'  }
-#'  where \eqn{\hat{\beta}_{ml}(y_n)} is the EPLS estimator, which coincides
-#'  with the maximum-likelihood estimator of SEPaLS for a threshold \eqn{y_n}.}
-#'  \item{\code{Laplace} }{then the estimator is proportional to
-#'  \deqn{
-#'  S_\lambda\left(\hat{\beta}_{ml}(y_n)\right),
-#'  }
-#' where \eqn{S_\lambda} is the soft-thresholding operator of threshold
-#' \eqn{\lambda}.}
+#'     \item \code{vMF}: then the estimator is proportional to
+#'     \deqn{ \hat{\beta}_{ml}(y_n) + \kappa_0\mu_0, }
+#'     where \eqn{\hat{\beta}_{ml}(y_n)} is the EPLS estimator, which coincides
+#'     with the maximum-likelihood estimator of SEPaLS for a threshold \eqn{y_n}.
+#'     \item \code{Laplace}: then the estimator is proportional to
+#'     \deqn{ S_\lambda\left(\hat{\beta}_{ml}(y_n)\right), }
+#'     where \eqn{S_\lambda} is the soft-thresholding operator of threshold
+#'     \eqn{\lambda}.
 #' }
 #'
 #' @return A SEPaLS estimator
@@ -93,11 +89,11 @@ SEPaLS <- function(X,Y,yn,type=c("vMF","Laplace"),
   {
     if(is.null(kappa0)){
       problem <- TRUE
-      cat("Please give a value to kappa0")
+      message("Please give a value to kappa0")
     }
     if(is.null(mu0)){
       problem <- TRUE
-      cat("Please give a value to mu0")
+      message("Please give a value to mu0")
     }
     if(!problem){
       out <- out + kappa0*mu0
@@ -107,7 +103,7 @@ SEPaLS <- function(X,Y,yn,type=c("vMF","Laplace"),
   {
     if(is.null(lambda)){
       problem <- TRUE
-      cat("Please give a value to lambda")
+      message("Please give a value to lambda")
     }
     if(!problem){
       out_abs <- abs(out) - lambda
@@ -133,8 +129,8 @@ SEPaLS <- function(X,Y,yn,type=c("vMF","Laplace"),
 #'
 #' @param X \eqn{(n\times p)}-dimensional matrix of the covariates.
 #' @param Y \eqn{(n)}-dimensional vector of the response.
-#' @param yn \eqn{y_n} the quantile corresponding to lowest values of \eqn{Y}s to put in th
-#' e queue.
+#' @param yn \eqn{y_n} the quantile corresponding to lowest values of \eqn{Y}s
+#' to put in the tail.
 #' @param type character, whether \code{vMF} for von Mises-Fisher prior or
 #' \code{Laplace} for Laplace prior. See details.
 #' @param mu0  \eqn{\mu_0}, unitary \eqn{(p)}-dimensional vector. The direction
@@ -148,11 +144,11 @@ SEPaLS <- function(X,Y,yn,type=c("vMF","Laplace"),
 #'
 #' @return A list with two elements:
 #' \itemize{
-#' \item{\code{ws}}{A \eqn{(B\times p)}-dimensional matrix  with each
-#' row corresponding to the \emph{SEPaLS} direction estimated on each bootstrap
-#' sample.}
-#' \item{\code{cor}}{The correlation of each estimate direction on the Out-Of-Ba
-#' g (OOB) sample with the response.}
+#'     \item \code{ws}: A \eqn{(B\times p)}-dimensional matrix  with each
+#'     row corresponding to the \emph{SEPaLS} direction estimated on each
+#'     bootstrap sample.
+#'     \item \code{cor}: The correlation of each estimate direction on the
+#'     Out-Of-Bag (OOB) sample with the response.
 #' }
 #'
 #' @export
