@@ -2,7 +2,7 @@
 
 R package to Compute Shrinkage for Extreme Partial Least-Squares (SEPaLS) estimators, an adaptation of the original Partial Least Squares (PLS) method tailored to the extreme-value framework. 
 
-Now on the CRAN, please install as usual
+Now on the CRAN, please use the following to install the CRAN version:
 ```{r}
 install.packages("SEPaLS")
 ```
