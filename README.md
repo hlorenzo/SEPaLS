@@ -4,7 +4,7 @@ R package to Compute Shrinkage for Extreme Partial Least-Squares (SEPaLS) estima
 
 Now on the CRAN, please install as usual
 ```{r}
-install.packages{"SEPaLS}
+install.packages("SEPaLS")
 ```
 
 Joint work by Stéphane Girard, Hadrien Lorenzo and Julyan Arbel.
