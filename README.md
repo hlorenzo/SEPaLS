@@ -1,4 +1,4 @@
-![image alt="image" width="50%" height="auto"](images/sparse_prior_3d_triplette.png)
+![image alt="image" width="20%" height="auto"](images/sparse_prior_3d_triplette.png)
 # Shrinkage for Extreme Partial Least-Squares (SEPaLS)
 
 R package to Compute Shrinkage for Extreme Partial Least-Squares (SEPaLS) estimators, an adaptation of the original Partial Least Squares (PLS) method tailored to the extreme-value framework. 
